@@ -1,0 +1,21 @@
+DOUBLY LINKED LIST – BROWSER NAVIGATION
+
+Create Page node with:
+    url
+    next pointer
+    previous pointer
+
+Visit Page:
+Create new page
+If current is not null
+    current.next = new page
+    new page.previous = current
+Set current = new page
+
+Go Back:
+If current.previous is not null
+    Move current to previous page
+
+Go Forward:
+If current.next is not null
+    Move current to next page
