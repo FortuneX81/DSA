@@ -1,0 +1,16 @@
+CREATE node with song name
+SET head to null
+
+ADD SONG:
+If head is null
+    head = new song
+Else
+    Move to last node
+    Add new song at the end
+
+PLAY SONGS:
+Start at head
+While node is not null
+    Print song name
+    Move to next node
+End while

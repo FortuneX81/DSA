@@ -1,0 +1,44 @@
+class Song {
+    String name;
+    Song next;
+
+    public Song(String name) {
+        this.name = name;
+        this.next = null;
+    }
+}
+
+public class SimplePlaylist {
+
+    Song head;
+
+    public void addSong(String name) {
+        Song newSong = new Song(name);
+
+        if (head == null) {
+            head = newSong;
+        } else {
+            Song temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newSong;
+        }
+    }
+
+    public void playSongs() {
+        Song temp = head;
+
+        while (temp != null) {
+            System.out.println("Playing: " + temp.name);
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        SimplePlaylist playlist = new SimplePlaylist();
+        playlist.addSong("Song 1");
+        playlist.addSong("Song 2");
+        playlist.playSongs();
+    }
+}

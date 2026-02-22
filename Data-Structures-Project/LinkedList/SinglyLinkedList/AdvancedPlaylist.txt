@@ -1,0 +1,68 @@
+package advancedplaylisttest;
+
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+class AdvancedSong {
+    String path;
+    AdvancedSong next;
+
+    public AdvancedSong(String path) {
+        this.path = path;
+        this.next = null;
+    }
+}
+
+public class advancedplaylist {
+
+    AdvancedSong head;
+
+    public void addSong(String path) {
+        AdvancedSong newSong = new AdvancedSong(path);
+
+        if (head == null) {
+            head = newSong;
+        } else {
+            AdvancedSong temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newSong;
+        }
+    }
+
+    public void playSongs() {
+        AdvancedSong temp = head;
+
+        while (temp != null) {
+            playAudio(temp.path);
+            temp = temp.next;
+        }
+    }
+
+    private void playAudio(String filePath) {
+        try {
+            File file = new File(filePath);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+
+            Thread.sleep(clip.getMicrosecondLength() / 1000);
+
+            clip.close();
+            audioStream.close();
+
+        } catch (Exception e) {
+            System.out.println("Error playing file: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        advancedplaylist playlist = new advancedplaylist();
+        playlist.addSong("C:\\Users\\Fortune X\\Music\\Timi Dre - ON YOU [SP2SIrHjJUc].wav");
+        playlist.playSongs();
+    }
+}

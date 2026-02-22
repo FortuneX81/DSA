@@ -1,0 +1,28 @@
+CIRCULAR LINKED LIST – ROUND ROBIN
+
+Create a process node with:
+    id
+    next pointer
+
+Add Process:
+If head is null
+    head = new process
+    head.next = head
+Else
+    Move to last node (where next = head)
+    last.next = new process
+    new process.next = head
+
+Execute (Simple):
+Start at head
+Repeat for given number of rounds
+    Print process id
+    Move to next process
+
+Execute (Advanced):
+Start at head
+Do
+    Print process id
+    Reduce process time
+    Move to next process
+While not back at head

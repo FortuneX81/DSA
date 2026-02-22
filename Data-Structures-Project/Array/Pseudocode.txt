@@ -1,0 +1,15 @@
+START
+Create matrix A
+Create matrix B
+Create result matrix
+
+FOR each row i in A
+    FOR each column j in B
+        FOR each element k
+            result[i][j] = result[i][j] + A[i][k] * B[k][j]
+        END FOR
+    END FOR
+END FOR
+
+PRINT result matrix
+END
