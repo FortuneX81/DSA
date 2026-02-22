@@ -10,9 +10,9 @@ It uses three nested loops to multiply two matrices.
 
 
 
-Time Complexity: O(n^3)
 
 
 
 The result is printed in the console.
+
 
